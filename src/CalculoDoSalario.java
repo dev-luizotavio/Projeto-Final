@@ -7,25 +7,31 @@ public class CalculoDoSalario {
     // Método que calcula o desconto do Imposto de Renda (famoso Leão) com base na tabela fornecida.
     public static double CalcR (double salariob) {
 
-        if (salariob <= 1903.98) {
+        if(salariob <=1903.98){
 
             return 0;
 
-        } else if (salariob <= 2826.65) {
+        } else if(salariob <=2826.65) {
 
-            return salariob * 0.075;
+            return (salariob - 1903.98) * 0.075;
 
-        } else if (salariob <= 3751.05) {
+        } else if(salariob <=3751.05)
 
-            return salariob * 0.15;
+        {
 
-        } else if (salariob <= 4664.68) {
+            return (2826.65 - 1903.98) * 0.075 + (salariob - 2826.65) * 0.015;
 
-            return salariob * 0.225;
+        } else if(salariob <=4664.68)
 
-        } else {
+        {
 
-            return salariob * 0.275;
+            return (2826.65 - 1903.98) * 0.075 + (3751.05 - 2826.65) * 0.015 + (salariob - 3751.05) * 0.225;
+
+        } else
+
+        {
+
+            return (2826.65 - 1903.98) * 0.075 + (3751.05 - 2826.65) * 0.15 + (4664.68 - 3751.05) * 0.225 + (salariob - 4664.68) * 0.275;
 
         }
 
